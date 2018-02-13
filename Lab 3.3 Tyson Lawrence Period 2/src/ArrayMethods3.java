@@ -9,8 +9,16 @@ public class ArrayMethods3 {
 	 //split array into two halves.
 	int half=list1.length/2;
 	int end=list1.length;
-	String[]left=new String[0,half];
-	String[]right=new String[half,end];
+	String[]left=new String[half];
+	String[]right=new String[half];
+	for(int n=0;n<end;n++)
+	{if(n<half)
+	  {list1[n]=left[n];
+	  }
+	else if(n>=half)
+	  {list1[n]=right[end-half];
+	  }
+	}
 	
 	return(merge(mergeSort(left),mergeSort(right)));
 	}
