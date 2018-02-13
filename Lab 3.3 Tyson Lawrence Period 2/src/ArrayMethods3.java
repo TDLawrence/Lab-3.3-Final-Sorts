@@ -1,6 +1,12 @@
-
+import java.util.Arrays;
 public class ArrayMethods3 {
-
+    public static void main(String[]args)
+    {String[]list= {"cat","apple","bear","love","computer","interstate","Tyson"};
+    System.out.println(Arrays.toString(mergeSort(list)));
+    	
+    }
+	
+	
 	public static String[] mergeSort(String[]list1)
 	{if(list1.length<=1)
 	   {return list1;
@@ -8,18 +14,20 @@ public class ArrayMethods3 {
 	   }
 	 //split array into two halves.
 	int half=list1.length/2;
-	int end=list1.length;
+	int end=list1.length-1;
 	String[]left=new String[half];
 	String[]right=new String[half];
+	
 	for(int n=0;n<end;n++)
 	{if(n<half)
-	  {list1[n]=left[n];
+	  {left[n]=list1[n];
 	  }
 	else if(n>=half)
-	  {list1[n]=right[end-half];
+	  {right[n-half]=list1[n];
 	  }
 	}
-	
+	System.out.print(Arrays.toString(left));
+	System.out.print(Arrays.toString(right));
 	return(merge(mergeSort(left),mergeSort(right)));
 	}
 
