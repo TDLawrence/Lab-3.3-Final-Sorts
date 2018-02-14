@@ -6,6 +6,13 @@ public class ArrayMethods3 {
     	
     }
 	
+    public static void quickSort(int[]list1,int front, int back)
+    {if(back>front)
+     {
+    	
+     }
+    	
+    }
 	
 	public static String[] mergeSort(String[]list1)
 	{if(list1.length<=1)
@@ -13,21 +20,20 @@ public class ArrayMethods3 {
 		
 	   }
 	 //split array into two halves.
-	int half=list1.length/2;
+	int lefthalf=list1.length/2;
+	int rightHalf=list1.length-lefthalf;
 	int end=list1.length-1;
-	String[]left=new String[half];
-	String[]right=new String[half];
+	String[]left=new String[lefthalf];
+	String[]right=new String[rightHalf];
 	
-	for(int n=0;n<end;n++)
-	{if(n<half)
+	for(int n=0;n<=end;n++)
+	{if(n<lefthalf)
 	  {left[n]=list1[n];
 	  }
-	else if(n>=half)
-	  {right[n-half]=list1[n];
+	else if(n>=lefthalf)
+	  {right[n-lefthalf]=list1[n];
 	  }
 	}
-	System.out.print(Arrays.toString(left));
-	System.out.print(Arrays.toString(right));
 	return(merge(mergeSort(left),mergeSort(right)));
 	}
 
@@ -71,4 +77,38 @@ public static String[] merge(String[]list1,String[]list2)
   }
   return merged;
 }
+
+public static int partition(int[]list1,int front,int back)
+{
+ 
+ int x=0;
+ int y=list1.length-1;
+ while(x!=y)
+     { int j=0;
+	   int z=0;
+       int n=1;
+       if (list1[n]<list1[0])
+       {j=list1[n];
+        list1[n]=list1[x];
+        list1[x]=j;
+       x++;
+       n++;}
+       
+       if (list1[n]>list1[0])
+	  {j=list1[n];
+	   list1[n]=list1[y];
+	   list1[y]=j;
+	   y--;
+	   n++;}
+       if(list1[n]==list1[0])
+      {z++;
+       list1[n]=list1[z];	   
+       n++;
+      }
+	 
+     }
+ return x;
+ }
+
+
 }
