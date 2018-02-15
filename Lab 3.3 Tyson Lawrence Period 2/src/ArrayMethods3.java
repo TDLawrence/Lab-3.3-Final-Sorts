@@ -2,14 +2,19 @@ import java.util.Arrays;
 public class ArrayMethods3 {
     public static void main(String[]args)
     {String[]list= {"cat","apple","bear","love","computer","interstate","Tyson"};
+     int[] list1= {0,9,3,7,2,6,1};
     System.out.println(Arrays.toString(mergeSort(list)));
+     quickSort(list1,0,list1.length-1);
+     System.out.print(Arrays.toString(list1));
     	
     }
 	
     public static void quickSort(int[]list1,int front, int back)
     {if(back>front)
      {
-    	
+    	int pivotPos=partition(list1,front,back);
+    	quickSort(list1,front,pivotPos-1);
+    	quickSort(list1,pivotPos+1,back);
      }
     	
     }
@@ -81,28 +86,30 @@ public static String[] merge(String[]list1,String[]list2)
 public static int partition(int[]list1,int front,int back)
 {
  
- int x=0;
- int y=list1.length-1;
- while(x!=y)
-     { int j=0;
-	   int z=0;
-       int n=1;
-       if (list1[n]<list1[0])
-       {j=list1[n];
-        list1[n]=list1[x];
-        list1[x]=j;
-       x++;
-       n++;}
+
+	  int pIndex=front;
+	   int cIndex=back;
+ while(pIndex!=cIndex)
+     { int temp=0;
+       int n=front+1;
        
-       if (list1[n]>list1[0])
-	  {j=list1[n];
+       if (list1[n]<list1[front])
+       {temp=list1[n];
+        list1[n]=list1[pIndex];
+        list1[pIndex]=temp;
+       temp=pIndex;
+       x=n;
+       n=temp;}
+       
+       else if (list1[n]>list1[front])
+	  {temp=list1[n];
 	   list1[n]=list1[y];
-	   list1[y]=j;
-	   y--;
+	   list1[y]=temp;
+	   temp=y;
 	   n++;}
-       if(list1[n]==list1[0])
-      {z++;
-       list1[n]=list1[z];	   
+       else if(list1[n]==list1[front])
+      {temp++;
+       list1[n]=list1[temp];	   
        n++;
       }
 	 
