@@ -86,12 +86,24 @@ public static String[] merge(String[]list1,String[]list2)
 public static int partition(int[]list1,int front,int back)
 { int pivotPos=front;
 int temp=0;
+//Checks to see values that are less than when partitionIndex is 0
   for(int x=front+1;x<=back;x++)
   {if(list1[x]<list1[pivotPos])
    {temp=list1[pivotPos];
    list1[pivotPos]=list1[x];
    list1[x]=temp;
    pivotPos= x;
+   //checks for values less than partition when partitionIndex is swapped
+   for(int y=pivotPos-1;y>=0;y--)
+    {if (list1[y]>list1[pivotPos])
+     {temp=list1[pivotPos];
+      list1[pivotPos]=list1[y];
+      list1[y]=temp;
+      pivotPos=y;
+    	
+     }
+	   
+    }
    }
   
   }
